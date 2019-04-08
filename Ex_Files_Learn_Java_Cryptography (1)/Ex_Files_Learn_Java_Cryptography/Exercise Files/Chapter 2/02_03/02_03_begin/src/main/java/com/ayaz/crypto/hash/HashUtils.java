@@ -1,5 +1,7 @@
 package com.ayaz.crypto.hash;
 
+import org.mindrot.jbcrypt.BCrypt;
+
 import java.io.ByteArrayOutputStream;
 import java.security.MessageDigest;
 import java.security.SecureRandom;
@@ -23,5 +25,14 @@ public class HashUtils {
 
         MessageDigest messageDigest = MessageDigest.getInstance(SHA2_ALFORITHM);
         return messageDigest.digest(valueToHash);
+    }
+
+
+    public static String hashPassword(String password) {
+        return BCrypt.hashpw(password, BCrypt.gensalt());
+    }
+
+    public static boolean verifyPassword(String password, String hashedPassword) {
+        return BCrypt.checkpw(password, hashedPassword);
     }
 }

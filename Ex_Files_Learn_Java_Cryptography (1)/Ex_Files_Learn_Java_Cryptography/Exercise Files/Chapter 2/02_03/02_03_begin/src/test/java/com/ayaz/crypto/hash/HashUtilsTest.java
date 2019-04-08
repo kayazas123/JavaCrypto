@@ -5,8 +5,7 @@ import org.junit.jupiter.api.Test;
 import javax.xml.bind.DatatypeConverter;
 import java.util.UUID;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 class HashUtilsTest {
 
@@ -26,5 +25,13 @@ class HashUtilsTest {
         assertNotNull(hash);
         byte[] hash2 = HashUtils.createSHA2Hash(valueToHash, salt);
         assertEquals(DatatypeConverter.printHexBinary(hash), DatatypeConverter.printHexBinary(hash2));
+    }
+
+    @Test
+    void testPasswordRoutine() {
+        String secretPhrase = "Correct Horse battery staple";
+        String passwordHash = HashUtils.hashPassword(secretPhrase);
+        System.out.println(passwordHash);
+        assertTrue(HashUtils.verifyPassword(secretPhrase, passwordHash));
     }
 }
