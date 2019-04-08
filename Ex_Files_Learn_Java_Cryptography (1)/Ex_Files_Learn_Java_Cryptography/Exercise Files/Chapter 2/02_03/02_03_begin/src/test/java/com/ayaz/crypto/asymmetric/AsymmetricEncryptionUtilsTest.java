@@ -1,12 +1,12 @@
 package com.ayaz.crypto.asymmetric;
 
-import com.ayaz.crypto.symmetric.SymmetricEncryptionUtils;
 import org.junit.jupiter.api.Test;
 
 import javax.xml.bind.DatatypeConverter;
 import java.security.KeyPair;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 class AsymmetricEncryptionUtilsTest {
 
